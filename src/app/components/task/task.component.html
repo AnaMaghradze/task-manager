@@ -1,0 +1,12 @@
+<div class="task" (click)="toggle($event)">
+  <div class="status-icons">
+    <i class="las la-check-circle" *ngIf="isDone"></i>
+    <i class="las la-hourglass-half" *ngIf="!isDone"></i>
+  </div>
+  <p [ngClass]="{ 'line-through': isDone == true }">
+    <ng-content></ng-content>
+  </p>
+  <div>
+    <i class="las la-times task-controllers" (click)="delete($event)"></i>
+  </div>
+</div>

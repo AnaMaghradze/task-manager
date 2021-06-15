@@ -1,0 +1,81 @@
+@import "../../../styles/index.scss";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sign-in-form {
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: none;
+  height: fit-content;
+  padding: 10px;
+
+  & > input {
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 0 20px;
+    margin: 10px 0;
+    background: none;
+    border-radius: 5px;
+    border: 1px solid $primary-1;
+    @include text-style(16px, 500, $dark-2, Poppins);
+  }
+
+  label {
+    @include text-style(16px, 500, $dark-2, Poppins);
+    cursor: pointer;
+  }
+
+  .remember-wrapper {
+    width: 100%;
+    padding: 10px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    input {
+      margin: 0 10px;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    background: $primary-3;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    @include text-style(16px, 500, $light-1, Poppins);
+  }
+
+  a {
+    padding: 15px 30px;
+    margin-top: 20px;
+    background: $primary-1;
+    border-radius: 30px;
+    @include text-style(16px, 500, $light-0, Poppins);
+    text-decoration: none;
+  }
+}
+
+.failure {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  @include text-style(14px, 500, $light-0, Poppins);
+  border-radius: 5px;
+  border: 1px solid $light-0;
+  background: $primary-2;
+}
+
+@media screen and (max-width: 700px) {
+}

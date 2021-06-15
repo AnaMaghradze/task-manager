@@ -1,0 +1,18 @@
+<div class="sidebar" [ngClass]="{ 'toggle-sidebar': toggler == true }">
+  <div class="toggler-btn" (click)="toggle()">
+    <i class="las la-chevron-circle-left" *ngIf="!toggler"></i>
+    <i class="las la-chevron-circle-right" *ngIf="toggler"></i>
+  </div>
+  <div class="tools-container" *ngIf="sidebarOpen">
+    <div class="tool profile-tool">
+      <div class="img-wrapper">
+        <img [src]="imgSrc" alt="user-profile" />
+      </div>
+      <span>{{ authorizedUser.username }}</span>
+    </div>
+    <div class="tool logout-tool" (click)="signout($event)">Log Out</div>
+    <div class="tool theme" (click)="switchTheme($event)">
+      <i class="las la-adjust"></i>
+    </div>
+  </div>
+</div>

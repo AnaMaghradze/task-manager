@@ -1,0 +1,118 @@
+@import "../../../styles/index.scss";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sign-up-form {
+  width: 100%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  padding: 10px;
+
+  .response {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    @include text-style(14px, 500, $light-0, Poppins);
+    border-radius: 5px;
+    border: 1px solid $light-0;
+  }
+
+  .input-group {
+    width: 100%;
+    padding: 10px 0;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    input {
+      width: inherit;
+      padding: 15px 42px 15px 20px;
+      outline: none;
+      background: none;
+      border-radius: 5px;
+      border: 1px solid $primary-1;
+      @include text-style(16px, 500, $dark-2, Poppins);
+    }
+
+    i {
+      font-size: 25px;
+      color: $primary-2;
+      position: absolute;
+      top: 38px;
+      right: 5px;
+      transform: translate(-50%, -50%);
+    }
+
+    small {
+      position: absolute;
+      bottom: -0.6em;
+      left: 0;
+      display: flex;
+      align-self: flex-start;
+      text-align: start;
+      @include text-style(14px, 500, $primary-2, Poppins);
+    }
+  }
+
+  label {
+    @include text-style(16px, 500, $dark-2, Poppins);
+    cursor: pointer;
+  }
+
+  .agreement-wrapper {
+    width: 100%;
+    padding: 10px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    input {
+      margin: 0 10px;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 15px;
+    background: $primary-3;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    @include text-style(16px, 500, $light-1, Poppins);
+  }
+
+  a {
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: $primary-1;
+    border-radius: 30px;
+    @include text-style(16px, 500, $light-0, Poppins);
+    text-decoration: none;
+  }
+}
+
+.pending {
+  background: $primary-3;
+  color: $light-0;
+}
+
+.success {
+  background: $primary-1;
+  color: $light-0;
+}
+
+.failure {
+  background: $primary-2;
+  color: $light-0;
+}

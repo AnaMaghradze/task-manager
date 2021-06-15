@@ -1,0 +1,77 @@
+@import "../../../styles/index.scss";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.task {
+  min-width: 250px;
+  min-height: 60px;
+  max-height: fit-content;
+  border-radius: 4px;
+  border: 1px solid $light-1;
+  background-color: $light-1;
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px $shadow;
+  }
+}
+
+.task .status-icons {
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i.la-check-circle {
+    font-size: 25px;
+    color: $primary-1;
+  }
+
+  i.la-hourglass-half {
+    font-size: 25px;
+    color: $primary-2;
+  }
+}
+
+.task p {
+  padding: 2px 10px;
+  width: 100%;
+  text-align: start;
+  word-break: break-all;
+  @include text-style(16px, 500, $dark-1, Poppins);
+}
+
+.line-through {
+  text-decoration: line-through;
+}
+
+.task div:last-child {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+
+  i {
+    font-size: 28px;
+    transition: 0.6s;
+    margin: 0 5px;
+  }
+  .la-edit,
+  .la-pen {
+    color: $primary-3;
+  }
+  .la-times {
+    color: $primary-2;
+  }
+}

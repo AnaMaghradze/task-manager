@@ -1,0 +1,11 @@
+<div
+  class="filter-dropdown"
+  [ngClass]="{ 'dd-dropped': dropped == true }"
+  (click)="toggleDropdown()"
+>
+  <div class="chosen">{{ selected }}</div>
+  <div class="arrow" [ngClass]="{ 'arrow-up': dropped == true }"></div>
+  <ul class="dropdown-content" *ngIf="dropped">
+    <li id="done" *ngFor="let li of list" (click)="select(li)">{{ li }}</li>
+  </ul>
+</div>

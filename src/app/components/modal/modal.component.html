@@ -1,0 +1,18 @@
+<div class="modal" (click)="blur($event)">
+  <div class="modal-container" [ngStyle]="modalStyle">
+    <div class="modal-title">List Settings</div>
+    <div class="modal-close" (click)="close($event)">
+      <i class="las la-times"></i>
+    </div>
+    <div class="modal-content">
+      <input
+        id="list-name-input"
+        placeholder="Edit List Name"
+        [value]="list.name"
+        (keyup)="onKey($event)"
+      />
+      <button class="update-btn" (click)="edit($event)">Update List</button>
+      <button class="delete-btn" (click)="delete($event)">Delete List</button>
+    </div>
+  </div>
+</div>

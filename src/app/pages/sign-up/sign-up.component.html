@@ -1,0 +1,78 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="sign-up-form">
+  <div
+    class="response"
+    *ngIf="formSubmitted"
+    [ngClass]="{
+      pending: signUpResponse.status == 'pending',
+      success: signUpResponse.status == 'success',
+      failure: signUpResponse.status == 'failure'
+    }"
+  >
+    {{ signUpResponse.message }}
+  </div>
+  <div class="input-group">
+    <input
+      formControlName="username"
+      type="text"
+      placeholder="User Name"
+      required
+    />
+    <i
+      class="las la-exclamation-circle"
+      *ngIf="username.touched && username.errors?.required"
+      title="required"
+    ></i>
+    <small
+      *ngIf="
+        (username.errors?.pattern || username.errors?.minlength) &&
+        (username.dirty || username.touched)
+      "
+      >Use at least 4 characters (letters, numbers)</small
+    >
+  </div>
+  <div class="input-group">
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="Email"
+      required
+    />
+    <i
+      class="las la-exclamation-circle"
+      *ngIf="email.touched && email.errors?.required"
+      title="required"
+    ></i>
+    <small *ngIf="email.errors?.pattern && (email.dirty || email.touched)"
+      >Invalid email</small
+    >
+  </div>
+  <div class="input-group">
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Password"
+      required
+    />
+    <i
+      class="las la-exclamation-circle"
+      *ngIf="password.touched && password.errors?.required"
+      title="required"
+    ></i>
+    <small
+      *ngIf="password.errors?.pattern && (password.dirty || password.touched)"
+      >Use at least one number and at least one special character
+      (!@#$%^&*)</small
+    >
+  </div>
+  <div class="agreement-wrapper">
+    <input
+      formControlName="agreement"
+      type="checkbox"
+      id="agreement"
+      required
+    />
+    <label for="agreement">I agree to the terms and conditions</label>
+  </div>
+  <button type="submit" [disabled]="form.invalid">Sign Up</button>
+  <a [routerLink]="['../signin']">Sign In</a>
+</form>

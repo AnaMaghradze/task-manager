@@ -1,0 +1,8 @@
+<div class="list" (click)="open($event)" [ngClass]="{ open: isOpen == true }">
+  <div class="list-settings" (click)="configureList($event)">
+    <i class="las la-cog"></i>
+  </div>
+  <p>
+    <ng-content></ng-content>
+  </p>
+</div>

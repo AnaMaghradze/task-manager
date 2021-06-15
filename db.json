@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "username": "User",
+      "email": "user@gmail.com",
+      "password": "User123#",
+      "id": "1ad8fa2c-a5e6-e56d-7afd-eb18caf23259",
+      "listGroupId": "b3f77ddf-d360-c782-9a6c-797abff32f3c"
+    }
+  ],
+  "lists": [
+    {
+      "id": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "name": "Welcome To The Task Manager",
+      "listGroupId": "b3f77ddf-d360-c782-9a6c-797abff32f3c",
+      "isOpen": true
+    },
+    {
+      "id": "f9ceda9b-5b64-79f5-1cd6-9d49d1043c56",
+      "name": "My List",
+      "listGroupId": "b3f77ddf-d360-c782-9a6c-797abff32f3c"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "6edef4a6-da9a-f226-0da4-72c39dc1775f",
+      "name": "Create Lists",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": true
+    },
+    {
+      "id": "86317b00-8d94-e411-cedc-47b88c3cdb3c",
+      "name": "Update/delete lists",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": false
+    },
+    {
+      "id": "e8d3bab5-39fb-b181-9a03-c9107e7f4f7f",
+      "name": "Add tasks to the list",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": false
+    },
+    {
+      "id": "71a297b1-fb94-65d8-60e5-795373452009",
+      "name": "Mark tasks as done",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": true
+    },
+    {
+      "id": "7477f871-6064-ef5d-6993-574675dca03a",
+      "name": "Delete tasks",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": false
+    },
+    {
+      "id": "18021300-c8d1-bdd4-21d0-3813d3c97d0c",
+      "name": "Filter tasks (all, done, todo)",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": false
+    },
+    {
+      "id": "a2558d04-1ffe-4fca-b36f-f4e97775aee4",
+      "name": "Change theme",
+      "listId": "8044ab0f-ac66-9410-e895-1da21f8a0d84",
+      "isDone": false
+    }
+  ]
+}

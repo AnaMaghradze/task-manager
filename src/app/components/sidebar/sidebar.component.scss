@@ -1,0 +1,90 @@
+@import "../../../styles/index.scss";
+
+:host {
+  display: block;
+  z-index: 5;
+}
+
+.sidebar {
+  width: 10px;
+  height: 300px;
+  background: $primary-3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 50px;
+  padding: 20px 10px;
+  transition: 0.5s ease-in-out;
+  position: relative;
+  box-shadow: 0 3px 15px $shadow;
+}
+
+.toggler-btn {
+  padding: 5px 0px 5px 5px;
+  background: $primary-3;
+  border-top-left-radius: 26px;
+  border-bottom-left-radius: 30px;
+  position: absolute;
+  top: 0;
+  left: -15px;
+  cursor: pointer;
+  i {
+    font-size: 25px;
+    color: $light-1;
+  }
+}
+
+.tools-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tool {
+  padding: 5px 0;
+  word-break: break-all;
+  text-align: center;
+  @include text-style(16px, 500, $light-1, Poppins);
+  cursor: pointer;
+}
+
+.toggle-sidebar {
+  width: 150px;
+}
+
+.profile-tool {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .img-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: $light-1;
+    margin-bottom: 20px;
+    img {
+      width: inherit;
+      height: inherit;
+      border-radius: 100%;
+    }
+  }
+}
+
+.logout-tool {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid $light-1;
+  background: $light-1;
+  color: $primary-3;
+}
+
+.theme {
+  font-size: 28px;
+}

@@ -1,0 +1,16 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form.value)"
+  class="add-item-form"
+  [@slideInOut]="slide"
+>
+  <input
+    *ngIf="toggleInput"
+    formControlName="name"
+    type="text"
+    id="new-item"
+    [placeholder]="placeholder"
+    (blur)="toggleForm($event)"
+  />
+  <span (click)="toggleForm($event)" class="add-item-btn">+</span>
+</form>

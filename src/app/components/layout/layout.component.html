@@ -1,0 +1,14 @@
+<div
+  class="layout"
+  [ngClass]="{ 'dark-theme': theme == true, 'light-theme': theme == false }"
+>
+  <header>
+    <div class="title"><i class="las la-check-circle"></i> Task Manager</div>
+  </header>
+  <main>
+    <ng-content></ng-content>
+  </main>
+  <footer>
+    <small>&copy; Ana Maghradze</small>
+  </footer>
+</div>
