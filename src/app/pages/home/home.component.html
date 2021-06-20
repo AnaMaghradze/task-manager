@@ -19,16 +19,16 @@
         (onEdit)="updateList($event, modalInputList)"
         (onDelete)="deleteList(modalInputList)"
         [list]="modalInputList"
-        [modalStyle]="{ width: '60%', height: '60%' }"
+        [modalStyle]="{ width: '50%', height: '40%' }"
       >
       </app-modal>
     </div>
     <!-- add task button -->
     <app-add-item-form
       (formSubmitted)="createList($event)"
-      class="new-item-btn"
       [placeholder]="'Create New List'"
       style="position: absolute; bottom: 0px; left: 0px"
+      class="new-item-btn"
     ></app-add-item-form>
   </div>
   <div class="tasks-container">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { IList, ITask } from 'src/app/shared/interfaces/list.interface';
+import { IList } from 'src/app/shared/interfaces/list.interface';
+import { ITask } from 'src/app/shared/interfaces/task.interface';
 import { IUser } from 'src/app/shared/interfaces/user.interface';
 import { TaskManagerService } from 'src/app/shared/services/task-manager.service';
 import { FadeInOut } from 'src/app/shared/animations/fadeInOut.animation';
@@ -32,18 +33,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // get authorized user, then lists of the user
-    this.authService.getAuthorizedUser().pipe(
-      tap( user => this.user = user),
-      switchMap(user => this.tms
-        .getAllLists()
-        .pipe(
-          map((resp: IList[]) => {
-            this.lists = resp.filter(
-              (list) => list.listGroupId == user.listGroupId
-            );
-          })
-        ))
-    ).subscribe();
+    this.authService
+      .getAuthorizedUser()
+      .pipe(
+        tap((user) => (this.user = user)),
+        switchMap((user) =>
+          this.tms.getAllLists().pipe(
+            map((resp: IList[]) => {
+              this.lists = resp.filter(
+                (list) => list.listGroupId == user.listGroupId
+              );
+            })
+          )
+        )
+      )
+      .subscribe();
     // theme
     this.themeService.isThemeDark
       .pipe(tap((th) => (this.theme = th)))
@@ -75,12 +79,16 @@ export class HomeComponent implements OnInit {
   }
 
   createList(value: any) {
-    let list: IList = { id: '', name: '', listGroupId: '' };
-    list.id = this.guid.generateId();
-    list.name = value.name;
-    list.listGroupId = this.user.listGroupId;
-    this.tms.createList(list).subscribe();
-    this.lists.push(list); // update view
+    if (value.name) {
+      let id = this.guid.generateId();
+      let list: IList = {
+        id: id,
+        name: value.name,
+        listGroupId: this.user.listGroupId,
+      };
+      this.tms.createList(list).subscribe();
+      this.lists.push(list); // update view
+    }
   }
 
   updateList(e: any, list: IList) {
@@ -111,16 +119,17 @@ export class HomeComponent implements OnInit {
   }
 
   createTask(value: any) {
-    let task = { id: '', name: '', listId: '', isDone: false };
-    let id = this.guid.generateId();
-    if (this.tms.openedList) {
-      task.listId = this.tms.openedList.id;
-      task.id = id;
-      task.name = value.name;
-      task.isDone = false;
+    if (value.name && this.tms.openedList) {
+      let id = this.guid.generateId();
+      let task = {
+        id: id,
+        name: value.name,
+        listId: this.tms.openedList.id,
+        isDone: false,
+      };
+      this.tms.createTask(task).subscribe();
+      this.tasks.push(task); // update view
     }
-    this.tms.createTask(task).subscribe();
-    this.tasks.push(task); // update view
   }
 
   deleteTask(task: ITask) {
@@ -129,47 +138,29 @@ export class HomeComponent implements OnInit {
     this.tms.deleteTask(task.id).subscribe();
   }
 
-  // will be optimized !!!
+  // filter taks by done/todo/all using filter dropdown
   filterTasks(by: any) {
     if (this.listIsChosen) {
       this.tasks = [];
-      if (by.toLowerCase() == 'done') {
-        this.tms
-          .getAllTasks()
-          .pipe(
-            tap((resp: ITask[]) => {
+      this.tms
+        .getAllTasks()
+        .pipe(
+          tap((resp: ITask[]) => {
+            if (by.toLowerCase() === 'all') {
+              this.tasks = resp.filter(
+                (task) => this.tms.openedList.id == task.listId
+              );
+            } else {
+              let taskIsDone = by.toLowerCase() === 'done';
               this.tasks = resp.filter(
                 (task) =>
-                  task.isDone == true && this.tms.openedList.id == task.listId
+                  task.isDone == taskIsDone &&
+                  this.tms.openedList.id == task.listId
               );
-            })
-          )
-          .subscribe();
-      } else if (by.toLowerCase() == 'todo') {
-        this.tms
-          .getAllTasks()
-          .pipe(
-            tap((resp: ITask[]) => {
-              this.tasks = resp.filter(
-                (task) =>
-                  task.isDone == false && this.tms.openedList.id == task.listId
-              );
-            })
-          )
-          .subscribe();
-      } else {
-        this.tms
-          .getAllTasks()
-          .pipe(
-            map(
-              (resp) =>
-                (this.tasks = resp.filter(
-                  (task) => this.tms.openedList.id == task.listId
-                ))
-            )
-          )
-          .subscribe();
-      }
+            }
+          })
+        )
+        .subscribe();
     }
   }
 
