@@ -1,8 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SlideInOut } from 'src/app/shared/animations/slideInOut.animation';
-import { ITask } from 'src/app/shared/interfaces/list.interface';
-import { TaskManagerService } from 'src/app/shared/services/task-manager.service';
 
 @Component({
   selector: 'app-add-item-form',
